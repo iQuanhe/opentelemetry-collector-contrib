@@ -77,9 +77,11 @@ func logsMarshalers() map[string]LogsMarshaler {
 	otlpPb := newPdataLogsMarshaler(&plog.ProtoMarshaler{}, defaultEncoding)
 	otlpJSON := newPdataLogsMarshaler(&plog.JSONMarshaler{}, "otlp_json")
 	raw := newRawMarshaler()
+	scopeLog := newscopeLogMarshaler()
 	return map[string]LogsMarshaler{
 		otlpPb.Encoding():   otlpPb,
 		otlpJSON.Encoding(): otlpJSON,
 		raw.Encoding():      raw,
+		scopeLog.Encoding(): scopeLog,
 	}
 }
